@@ -31,6 +31,6 @@ app.use(function(err,req,res,next){
 });
 
 //lisen for requests
-app.listen(process.env.port || 5503,function(){
+app.listen(process.env.PORT || 3000, function(){
     console.log('listening for requests');
 });
