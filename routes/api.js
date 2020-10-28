@@ -6,7 +6,10 @@ const Interv = require('../models/interv');
 //get list of interventions from DB
 router.get('/interv', function(req,res,next){
     Interv.find().then(function(interv){
-        res.send(interv);
+        //console.log(interv);
+        console.count("All_Interv_GET_Count");
+        console.log(interv.length + ' interventions dans DB');
+        res.send(interv)
     });
 });
 
