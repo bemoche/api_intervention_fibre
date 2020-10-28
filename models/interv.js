@@ -5,20 +5,30 @@ const Schema = mongoose.Schema;
 const IntervSchema = new Schema({
     rc: Number,
     email: String,
-    echec: String,
+    echec: Boolean,
     operateur: String,
     grille: String,
-    code_postal: String,
+    code_postal: Number,
     rdv_date: String,
     rdv_heur: String,
-    client_present: String,
-    hotline: String,
+    client_present: Boolean,
+    hotline: Boolean,
     pm: String,
-    pbo: String,
-    desserte: String,
-    pto: String,
-    box_envoi: String,
-    box_etat: String,
+    pbo: {
+        "type": String,
+        "enum": ["Poteau", "Façade", "Chambre", "Immeuble"]},
+    desserte: {
+        "type": String,
+        "enum": ["Aérien", "Façade", "Souterrain", "Aéro-Souterrain", "Fourreau", "Apparent"]},
+    pto: {
+        "type": String,
+        "enum": ["Oui", "Non", "Oui/Non"]},
+    box_envoi: {
+        "type": String,
+        "enum": ["Reçu", "PasReçu", "????"]},
+    box_etat: {
+        "type": String,
+        "enum": ["OK", "NOK"]},
     decharge: String,
     commentaire: String
 });
