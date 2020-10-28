@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 //create interv Schema & model
 const IntervSchema = new Schema({
-    rc: String,
+    rc: Number,
     email: String,
     echec: String,
     operateur: String,
