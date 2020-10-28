@@ -3,24 +3,24 @@ const Schema = mongoose.Schema;
 
 //create interv Schema & model
 const IntervSchema = new Schema({
-    rc: {type:String},
-    email: {type:String},
-    echec: {type:String},
-    operateur: {type:String},
-    grille: {type:String},
-    code_postal: {type:String},
-    rdv_date: {type:String},
-    rdv_heur: {type:String},
-    client_present: {type:String},
-    hotline: {type:String},
-    pm: {type:String},
-    pbo: {type:String},
-    desserte: {type:String},
-    pto: {type:String},
-    box_envoi: {type:String},
-    box_etat: {type:String},
-    decharge: {type:String},
-    commentaire: {type:String}
+    rc: String,
+    email: String,
+    echec: String,
+    operateur: String,
+    grille: String,
+    code_postal: String,
+    rdv_date: String,
+    rdv_heur: String,
+    client_present: String,
+    hotline: String,
+    pm: String,
+    pbo: String,
+    desserte: String,
+    pto: String,
+    box_envoi: String,
+    box_etat: String,
+    decharge: String,
+    commentaire: String
 });
 
 const Interv = mongoose.model('interv', IntervSchema);
