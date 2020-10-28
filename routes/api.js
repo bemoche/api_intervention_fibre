@@ -15,7 +15,7 @@ router.get('/interv', function(req,res,next){
 
 //get interv by id
 router.get('/interv/:id', function(req,res,next){
-    Interv.findById(req.params.id).then(function(interv){
+    Interv.findById(parseInt(req.params.id)).then(function(interv){
         res.send(interv);
     });
 });
