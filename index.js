@@ -2,7 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv/config');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 //set up express app
 const app = express();
@@ -17,13 +19,19 @@ mongoose.connect(
 );
 mongoose.Promise = global.Promise;
 
-//////////////
+//Middlewares
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(cors());
 
 //initialise routes
-app.use('/api',require('./routes/api'));
+const apiRouter = require('./routes/api');
+const authRouter = require('./routes/auth');
+
+//Routes Middlewares
+app.use('/api',apiRouter);
+app.use('/api/user',authRouter);
+
 
 //erreur handling
 app.use(function(err,req,res,next){
@@ -31,6 +39,4 @@ app.use(function(err,req,res,next){
 });
 
 //lisen for requests
-app.listen(process.env.PORT || 3002, function(){
-    console.log('listening for requests');
-});
+app.listen(process.env.PORT || 3000, () => console.log('listening for requests'));
