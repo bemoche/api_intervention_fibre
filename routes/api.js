@@ -5,7 +5,7 @@ const verify = require('./verifyToken');
 
 
 //get list of interventions from DB
-router.get('/interv', verify, function(req,res,next){
+router.get('/interv', /*verify,*/ function(req,res,next){
     Interv.find().then(function(interv){
         //console.log(interv);
         console.count("All_Interv_GET_Count");
