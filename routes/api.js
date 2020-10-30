@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Interv = require('../models/Interv');
+const Interv = require('../models/interv');
 const verify = require('./verifyToken');
 
 
