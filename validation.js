@@ -10,7 +10,7 @@ const registerValidation = (data) => {
     });
     //return schema.validate(data);
 
-    return (req, res, next) => {
+    return (data) => {
         const result = schema.validate(data);
         if( result.error ) {
           return res.status(400).json({
