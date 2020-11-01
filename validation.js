@@ -8,16 +8,7 @@ const registerValidation = (data) => {
         grille: Joi.string().min(2).required(),
         rem: Joi.array()
     });
-    //return schema.validate(data);
-
-    return (data) => {
-        const result = schema.validate(data);
-        if( result.error ) {
-          return res.status(400).json({
-            message : result.error.details
-          })
-        }else return schema.validate(data);
-
+    return schema.validate(data);
 };
 
 const loginValidation = (data) => {
