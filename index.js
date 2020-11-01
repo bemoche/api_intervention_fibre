@@ -29,8 +29,8 @@ const apiRouter = require('./routes/api');
 const authRouter = require('./routes/auth');
 
 //Routes Middlewares
-app.use('/api',apiRouter);
-app.use('/api/user',authRouter);
+app.use('/api/intervs',apiRouter);
+app.use('/api/auth',authRouter);
 
 
 //erreur handling

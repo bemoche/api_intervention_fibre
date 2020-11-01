@@ -22,13 +22,15 @@ router.post('/register', async (req, res) => {
 
     //Create new user
     const user = new User({
-        name: req.body.name,
+        username: req.body.username,
         email: req.body.email,
         password: hashPassword,
+        grille: req.body.grille,
+        rem: req.body.rem
     });
     try{
         const savedUser = await user.save();
-        res.send({ user: user._id });
+        res.send({ user: user._id, email: user.email, grille: user.grille, rem: user.rem});
     }catch(err){
         res.status(400).send(err);
     }
