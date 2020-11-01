@@ -8,7 +8,7 @@ const registerValidation = (data) => {
         grille: Joi.string().min(2).required(),
         rem: Joi.array()
     });
-    return schema.validate(data);
+    return schema.validate(data, { abortEarly: false });
 };
 
 const loginValidation = (data) => {
