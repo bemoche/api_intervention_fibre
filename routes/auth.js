@@ -44,11 +44,11 @@ router.post('/login', async (req, res) => {
     
     //checking user existes
     const user = await User.findOne({email: req.body.email});
-    if(!user) return res.status(400).send([{message: ""email" must be a valid email"}]);
+    if(!user) return res.status(400).send([{message: "email must be a valid email"}]);
 
     //Checking password is correct
     const validPass = await bcrypt.compare(req.body.password, user.password);
-    if(!validPass) return res.status(400).send([{message: ""password" must be a valid password"}]);
+    if(!validPass) return res.status(400).send([{message: "password must be a valid password"}]);
 
     //Create & Assingn Token
     const token = jwt.sign({_id: user.id}, process.env.TOKEN_SECRET);
