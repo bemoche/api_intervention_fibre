@@ -14,7 +14,7 @@ router.post('/register', async (req, res) => {
 
     //checking user existes
     const emailExist = await User.findOne({email: req.body.email});
-    if(emailExist) return res.status(400).send('Email already exists');
+    if(emailExist) return res.status(400).send(error.details/*'Email already exists'*/);
 
     //Hash password
     const salt = await bcrypt.genSalt(10);
@@ -44,11 +44,11 @@ router.post('/login', async (req, res) => {
     
     //checking user existes
     const user = await User.findOne({email: req.body.email});
-    if(!user) return res.status(400).send('Email is wrong');
+    if(!user) return res.status(400).send(error.details/*'Email is wrong'*/);
 
     //Checking password is correct
     const validPass = await bcrypt.compare(req.body.password, user.password);
-    if(!validPass) return res.status(400).send('Invalid Password');
+    if(!validPass) return res.status(400).send(error.details/*'Invalid Password'*/);
 
     //Create & Assingn Token
     const token = jwt.sign({_id: user.id}, process.env.TOKEN_SECRET);
