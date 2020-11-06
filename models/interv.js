@@ -10,7 +10,7 @@ const IntervSchema = new Schema({
         "type": String,
         "required": true},
     echec: {
-        "type":Boolean,
+        "type":String,
         "required":true},
     operateur: {
         "type": String,
@@ -27,7 +27,7 @@ const IntervSchema = new Schema({
         "required": true},
     client_present: Boolean,
     hotline: {
-        "type": Boolean,
+        "type": String,
         "required": true},
     pm: String,
     pbo: {
