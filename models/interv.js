@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 //create interv Schema & model
 const IntervSchema = new Schema({
-    rc: {
+    jeton: {
         "type": Number,
         "required": true},
     email: {
@@ -50,8 +50,10 @@ const IntervSchema = new Schema({
         "type": String,
         "required": true,
         "enum": ["OK", "NOK"]},
-    decharge: String,
-    commentaire: String
+    decharge: {
+        "type": String},
+    commentaire: {
+        "type": String}
 });
 
 const Interv = mongoose.model('interv', IntervSchema);

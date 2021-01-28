@@ -21,7 +21,7 @@ router.get('/:id', function(req,res,next){
     });
 });
 
-//get interv by rc
+//get interv by jeton
 router.get('/jeton/:jeton', function(req,res,next){
     Interv.find({"jeton":req.params.jeton}).then(function(interv){
     res.send(interv);
