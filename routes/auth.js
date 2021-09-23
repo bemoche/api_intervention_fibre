@@ -10,11 +10,11 @@ const { countDocuments } = require('../models/User');
 router.post('/register', async (req, res) => {
     //validating user
     const { error } = registerValidation(req.body);
-    if(error) return res.status(400).send(error.details/*[0].message*/);
+    if(error) return res.status(403).send(error.details/*[0].message*/);
 
     //checking user existes
     const emailExist = await User.findOne({email: req.body.email});
-    if(emailExist) return res.status(403).send(error.details/*'Email already exists'*/);
+    if(emailExist) return res.status(403).send(error.details/*'Email already in use'*/);
 
     //Hash password
     const salt = await bcrypt.genSalt(10);
@@ -40,15 +40,15 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
     //validating user
     const { error } = loginValidation(req.body);
-    if (error) return res.status(400).send(error.details/*[0]*/);
+    if (error) return res.status(403).send(error.details/*[0]*/);
     
     //checking user existes
     const user = await User.findOne({email: req.body.email});
-    if(!user) return res.status(400).send([{message: "email fourni n'existe pas"}]);
+    if(!user) return res.status(403).send([{message: "Email fourni n'existe pas"}]);
 
     //Checking password is correct
     const validPass = await bcrypt.compare(req.body.password, user.password);
-    if(!validPass) return res.status(400).send([{message: "mot de passe invalide"}]);
+    if(!validPass) return res.status(401).send([{message: "Mot de passe invalide"}]);
 
     //Create & Assingn Token
     const token = jwt.sign({_id: user.id}, process.env.TOKEN_SECRET);
